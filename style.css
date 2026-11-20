@@ -455,3 +455,25 @@ summary::-webkit-details-marker{display:none}
 #dashboard:has(#k34:checked) label.kp[for=k34],.kpis:has(#k34:focus-visible) label.kp[for=k34]{outline-color:var(--lime);background:var(--panel2)}
 #dashboard:has(#k35:checked) .kpl35{display:block;animation:rise .5s both}
 #dashboard:has(#k35:checked) label.kp[for=k35],.kpis:has(#k35:focus-visible) label.kp[for=k35]{outline-color:var(--lime);background:var(--panel2)}
+
+/* jobs and shifts */
+#dashboard:has(#v6:checked) .vw6{display:block}
+#dashboard:has(#v6:checked) .side label[for=v6]{background:var(--lime);color:#11160a;font-weight:700}
+#dashboard:has(#v6:checked) .side label[for=v6]::before{opacity:1}
+.shs{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1rem 0}
+.shc{background:var(--panel2);border-radius:20px;padding:1.1rem;display:grid;gap:.35rem;animation:rise .6s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i)*.1s)}
+.shc small{color:var(--mute)}.shc b{font:900 3rem/1 var(--d)}.shc span{color:var(--mute);font-size:.85rem}
+.jb{height:10px;background:var(--line);border-radius:9px;overflow:hidden}
+.jb i{display:block;height:100%;width:var(--w);border-radius:9px;animation:w 1.1s cubic-bezier(.2,.7,.2,1) .3s both}
+.jhd,.jr summary{display:grid;grid-template-columns:1.6fr repeat(3,1fr) 100px;gap:1rem;align-items:center}
+.jhd{color:var(--mute);font-size:.8rem;padding:.5rem 1rem}
+.jr summary b small{display:block;color:var(--mute);font-weight:400;font-size:.78rem}
+.jc small,.jt small{display:block;color:var(--mute);font-size:.78rem;margin-top:.3rem}
+.jt{font-weight:700;text-align:right}
+.jd{padding:0 1rem 1.2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;animation:rise .45s both}
+.jd>div{background:var(--panel);border-radius:16px;padding:.9rem;display:grid;gap:.3rem;align-content:start}
+.jd h5{font:800 1.3rem var(--d);text-transform:uppercase;margin:0}.jd h5 small{font:400 .78rem var(--b);color:var(--mute);text-transform:none}
+.jd p{font-size:.9rem}.jd small{color:var(--mute)}.jd small.dn{color:var(--red)}
+.tojobs{margin-top:1rem;width:100%;background:var(--lime);color:#11160a;border:0;border-radius:14px;padding:.7rem;font:inherit;font-weight:700;cursor:pointer;transition:transform .2s}
+.tojobs:hover{transform:translateY(-2px)}
+@media(max-width:900px){.shs,.jd{grid-template-columns:1fr}.jhd{display:none}.jr summary{grid-template-columns:1fr}.jt{text-align:left}}

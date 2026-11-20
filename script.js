@@ -129,7 +129,7 @@ function panel(){
   else if(e.type==='due'){const d=e.t-TODAY;meta=d===0?'Due today':d>0?`Due in ${d} ${d===1?'day':'days'}`:'Past due'}
   else if(e.type==='breakdown')meta=`Down ${dur(e.dur)} · loss ${inr(e.cost)}`;
   h+=`<div class="ev2" style="--i:${n}"><span class="pill t-${e.type}">${LB[e.type]}</span><b>${m[0]} ${m[1]}</b><p>${e.tx}</p><small>${meta}${e.note?' · '+e.note:''}</small></div>`});
- $('cp').innerHTML=h}
+ h+=`<button class="tojobs" data-t="${S.sel}">Jobs and shifts on this day</button>`;$('cp').innerHTML=h}
 function go(y,m){if(m<0){m=11;y--}if(m>11){m=0;y++}if(y<START||y>MAXY)return;S.y=y;S.m=m;
  const f=day(y,m+1,1),len=new Date(U(y,m+1,0)).getUTCDate();S.sel=(TODAY>=f&&TODAY<f+len)?TODAY:f;grid()}
 $('cprev').onclick=()=>go(S.y,S.m-1);$('cnext').onclick=()=>go(S.y,S.m+1);
@@ -141,5 +141,7 @@ $('cf').onclick=e=>{const b=e.target.closest('button');if(b){S.f=b.dataset.f;gri
 $('cg').onclick=e=>{const b=e.target.closest('.cd');if(!b)return;S.sel=+b.dataset.t;
  $('cg').querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');panel()};
 document.querySelectorAll('input[name=dp]').forEach(r=>r.onchange=()=>{S.dp=+r.id.slice(2);S.mi=-1;fillMach();grid()});
+window.FPST=["run", "run", "run", "run", "run", "run", "run", "dn", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "sv", "sv", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "sv", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "dn", "run", "run", "sv", "run", "run", "run", "run", "run", "run", "run", "run", "run", "dn", "run", "run", "run"];
+window.FP={MS,H,day,TODAY,REF,ev};
 grid();
 })();
