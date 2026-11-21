@@ -11,7 +11,7 @@ const SH=[['A','6:00 to 14:00',360],['B','14:00 to 22:00',840],['C','22:00 to 6:
 const OPN=[['Sunil','Meena','Raju'],['Imran','Lakshmi','Joseph'],['Naveen','Prakash','Suresh']];
 const PR=[[.93,.86,.62],[.88,.74,.15],[.86,.7,.2],[.9,.78,.3]];
 const iso=t=>new Date(t*D).toISOString().slice(0,10);
-const fmt=t=>new Date(t*D).toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+const fmt=t=>new Date(t*D).toLocaleDateString((window.FPLOC||'en-IN'),{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
 function usage(i,t){
  const m=MS[i],inst=day(...m[2]);if(t<inst)return null;
  const dp=m[11],dow=new Date(t*D).getUTCDay(),cont=/Furnace/.test(m[1]),od=OP.find(o=>o[0].test(m[1]))||[0,['General work'],5,'pcs'];
@@ -59,5 +59,6 @@ $('jq').oninput=e=>{J.q=e.target.value;render()};
 $('jf').onclick=e=>{const b=e.target.closest('button');if(b){J.f=b.dataset.f;render()}};
 document.querySelectorAll('input[name=dp]').forEach(r=>r.addEventListener('change',render));
 document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.tojobs');if(b){$('v6').checked=true;go(+b.dataset.t)}});
+window.FPJ={render};
 render();
 })();

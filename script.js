@@ -106,7 +106,7 @@ const S={y:now.getFullYear(),m:now.getMonth(),sel:TODAY,f:'all',mi:-1,dp:0};
 const $=id=>document.getElementById(id);if(!$('cg'))return;
 const vis=l=>(l||[]).filter(e=>MS[e.i][11]===S.dp&&(S.f==='all'||e.type===S.f)&&(S.mi<0||e.i===S.mi));
 const mk=(a,b)=>{const out=[];for(let t=a;t<=b;t++)out.push(t);return out};
-const fmt=t=>new Date(t*D).toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+const fmt=t=>new Date(t*D).toLocaleDateString((window.FPLOC||'en-IN'),{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
 $('cm').innerHTML=MN.map((n,i)=>`<option value="${i}">${n}</option>`).join('');
 $('cy').innerHTML=mk(START,MAXY).map(y=>`<option>${y}</option>`).join('');
 const fillMach=()=>{$('cmach').innerHTML='<option value="-1">All machines</option>'+MS.map((m,i)=>m[11]===S.dp?`<option value="${i}">${m[1]}</option>`:'').join('')};fillMach();
@@ -142,6 +142,6 @@ $('cg').onclick=e=>{const b=e.target.closest('.cd');if(!b)return;S.sel=+b.datase
  $('cg').querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');panel()};
 document.querySelectorAll('input[name=dp]').forEach(r=>r.onchange=()=>{S.dp=+r.id.slice(2);S.mi=-1;fillMach();grid()});
 window.FPST=["run", "run", "run", "run", "run", "run", "run", "dn", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "sv", "sv", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "sv", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "run", "dn", "run", "run", "sv", "run", "run", "run", "run", "run", "run", "run", "run", "run", "dn", "run", "run", "run"];
-window.FP={MS,H,day,TODAY,REF,ev};
+window.FP={MS,H,day,TODAY,REF,ev,refresh:()=>grid()};
 grid();
 })();
